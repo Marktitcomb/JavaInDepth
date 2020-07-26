@@ -14,7 +14,13 @@ public class APIParser {
 			}
 		} catch (NumberFormatException e) {
 			//throw new APIFormatChangeException("Response: " + response + ", Element: code, Partner: " + partner);
-			throw new APIFormatChangeException(response, "code", partner);
+			//the higher level exception
+			
+			//APIFormatChangeException is higher level then also throws the lower level
+			APIFormatChangeException e1 = new APIFormatChangeException(response, "code", partner, e);
+			e1.initCause(e);//chaining exceptions!!! 
+			throw e1;
+		
 		}
 		
 		return responseCode;

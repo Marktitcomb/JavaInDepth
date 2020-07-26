@@ -20,6 +20,9 @@ public class ExceptionsDemo {
 		System.out.println("\nEnd of main ...");
 	}
 
+	/**
+	 * @throws FileNotFoundException
+	 */
 	private static void share() throws FileNotFoundException {
 		System.out.println("\nInside share ...");
 		
@@ -36,6 +39,8 @@ public class ExceptionsDemo {
 		} catch (APIFormatChangeException e) {
 			// Item 65: Don’t ignore exceptions
 			e.printStackTrace();
+			System.out.println(e.toString() );
+			System.out.println(e.getMessage()); 
 			
 			// Item 63: Include failure-capture information in detail messages
 			//System.out.println("e.toString(): " + e);
